@@ -17,7 +17,7 @@ are you ready to WAX ON!
 
 ## Index
 
-* [Introduction to WAX]()
+* [Introduction to WAX](docs/introduction-to-WAX.md)
   * -> [What is WAX?]()
   * -> [How is WAX different from other Blockchains.]()
   * -> [How can I WAX ON]()
