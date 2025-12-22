@@ -1,0 +1,28 @@
+name: Build & Deploy WAX Contract
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install deps
+        run: npm install
+
+      - name: Build contract
+        run: node scripts/build.js
+
+      - name: Deploy contract
+        env:
+          PRIVATE_KEY: ${{ secrets.WAX_PRIVATE_KEY }}
+        run: node scripts/deploy.js
