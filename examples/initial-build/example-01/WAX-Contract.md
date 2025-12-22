@@ -2,9 +2,12 @@
 
 ## Prerequesits - Nodejs
 
-node scripts/build.js
-node scripts/deploy.js
+`node scripts/build.js`
 
-cleos push action mycontract setmsg '["michael", "Hello WAX!"]' -p michael
-cleos push action mycontract erase '["michael"]' -p michael
-cleos push action mycontract ping '["michael"]' -p mycontract
+`node scripts/deploy.js`
+
+`cleos push action mycontract setmsg '["michael", "Hello WAX!"]' -p michael`
+
+`cleos push action mycontract erase '["michael"]' -p michael`
+
+`cleos push action mycontract ping '["michael"]' -p mycontract`
