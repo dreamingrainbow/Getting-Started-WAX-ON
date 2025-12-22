@@ -21,7 +21,7 @@ are you ready to WAX ON!
   * -> [What is WAX?](docs/what-is-wax.md)
   * -> [How is WAX different from other Blockchains.](docs/)
   * -> [How can I WAX ON](docs/)
-* [WAX - Wallets, Key's and Accounts](docs/)
+* [WAX - Wallets, Key's and Accounts](docs/WAX-Wallets-Keys-and-Accounts.md)
   *  -> [Biginers guide to WAX Wallets.](docs/)
   *  -> [Mneominic Phrases, Key's and WAX accounts](docs/)
   *  -> [Wax Supported Wallets](docs/)
