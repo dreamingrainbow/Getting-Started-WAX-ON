@@ -25,35 +25,35 @@ for (const arg of process.argv) {
     rpcFromArgv = arg;
   }
   if (arg.match(/^--from=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(7);
     args.from = temp;
   }
   if (arg.match(/^--to=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(5);
     args.to = temp;
   }
   if (arg.match(/^--contract=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(11);
     args.contract = temp;
   }
   if (arg.match(/^--symbol=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(9);
     args.symbol = temp;
   }
   if (arg.match(/^--amount=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(9);
     args.amount = temp;
   }
   if (arg.match(/^--memo=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(7);
     args.memo = temp;
   }
   if (arg.match(/^--bb=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(5);
     args.blocksBehind = temp;
   }
   if (arg.match(/^--expires=.+$/)) {
-    let temp = arg.slice();
+    let temp = arg.slice(10);
     args.expireSeconds = temp;
   }
   if (arg.match(/^--help$/)) {
@@ -99,7 +99,7 @@ const getSignatureProvider = () => {
   }
   if (!keyString) throw Error("Private Key Not Found.");
   const signatureProvider = new JsSignatureProvider([keyString]);
-  return signatureProvider;
+  return { signatureProvider };
 };
 
 const getApiConnector = ({ rpc, signatureProvider }) => {
@@ -109,7 +109,7 @@ const getApiConnector = ({ rpc, signatureProvider }) => {
     textDecoder: new TextDecoder(),
     textEncoder: new TextEncoder(),
   });
-  return api;
+  return { api };
 };
 
 const getTokenStats = async ({ rpc, contract, symbol }) => {
