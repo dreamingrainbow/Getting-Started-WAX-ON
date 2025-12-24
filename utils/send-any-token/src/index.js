@@ -42,7 +42,7 @@ for (const arg of process.argv) {
   }
   if (arg.match(/^--amount=.+$/)) {
     let temp = arg.slice(9);
-    args.amount = temp;
+    args.amount = parseFloat(temp);
   }
   if (arg.match(/^--memo=.+$/)) {
     let temp = arg.slice(7);
@@ -50,14 +50,15 @@ for (const arg of process.argv) {
   }
   if (arg.match(/^--bb=.+$/)) {
     let temp = arg.slice(5);
-    args.blocksBehind = temp;
+    args.blocksBehind = Number(temp);
   }
   if (arg.match(/^--expires=.+$/)) {
     let temp = arg.slice(10);
-    args.expireSeconds = temp;
+    args.expireSeconds = Number(temp);
   }
   if (arg.match(/^--help$/)) {
     console.log("Help Screen.");
+    process.exit(0);
   }
 }
 
@@ -73,12 +74,12 @@ const getRPCProvider = () => {
   const defaultRPC = "https://wax.greymass.com";
   let override = false;
   let overrideRPC = "https://wax.greymass.com";
-  if (process) {
-    if (process.env.WAX_RPC_URL !== undefined && !hasRPCFlag) {
-      override = true;
-      overrideRPC = process.env.WAX_RPC_URL;
-    }
+
+  if (process.env.WAX_RPC_URL !== undefined && !hasRPCFlag) {
+    override = true;
+    overrideRPC = process.env.WAX_RPC_URL;
   }
+
   if (hasRPCFlag) {
     override = true;
     overrideRPC = getRPCFromArgv();
@@ -89,11 +90,11 @@ const getRPCProvider = () => {
 
 const getSignatureProvider = () => {
   let keyString = "";
-  if (process) {
-    if (process.env.WAX_PRIVATE_KEY !== undefined && !hasKeyFlag) {
-      keyString = process.env.WAX_PRIVATE_KEY;
-    }
+
+  if (process.env.WAX_PRIVATE_KEY !== undefined && !hasKeyFlag) {
+    keyString = process.env.WAX_PRIVATE_KEY;
   }
+
   if (hasKeyFlag) {
     keyString = getKeyFromArgv();
   }
